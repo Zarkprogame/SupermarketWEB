@@ -7,8 +7,6 @@ namespace SupermarketWEB.Pages.Categories
 {
     public class CreateModel : PageModel
     {
-		public ICollection<Product>? Products { get; set; } = default!;
-
 		private readonly SupermarketContext _context;
         public CreateModel(SupermarketContext context)
 		{
