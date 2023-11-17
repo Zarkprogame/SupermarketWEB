@@ -1,0 +1,54 @@
+﻿@page
+@model SupermarketWEB.Pages.Products.EditModel
+@{
+	ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Products</h4>
+
+<hr/>
+
+<div class="row">
+	<div class="col-md-4">
+		<form method="post">
+			<input type="hidden" asp-for="CreateProduct.Product.Id">
+			<div class="form-group">
+				<label asp-for="CreateProduct.Product.Name" class="form-label"></label>
+				<input asp-for="CreateProduct.Product.Name" class="form-control" placeholder="Name" />
+				<span asp-validation-for="CreateProduct.Product.Name" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="CreateProduct.Product.Price" class="form-label"></label>
+				<input asp-for="CreateProduct.Product.Price" class="form-control" placeholder="Price" />
+				<span asp-validation-for="CreateProduct.Product.Price" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="CreateProduct.Product.Stock" class="form-label"></label>
+				<input asp-for="CreateProduct.Product.Stock" class="form-control" placeholder="Stock" />
+				<span asp-validation-for="CreateProduct.Product.Stock" class="text-danger"></span>
+				<div class="mb-3">
+					<label asp-for="CreateProduct.Product.Category" class="form-label"></label>
+
+					<select asp-for="CreateProduct.Product.CategoryId"
+							asp-items="@(new SelectList(Model.CreateProduct.CategoryList, "Id", "Name"))"
+							class="form-control">
+					</select>
+
+					<span asp-validation-for="CreateProduct.Product.Category" class="text-danger"></span>
+					<br>
+					<div />
+			<div class="form-group">
+				<input type="submit" value="Save" class="btn btn-success" />
+				<a asp-page="./Index" class="btn btn-primary">Back to List</a>
+			</div>
+		</form>
+	</div>
+</div>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}
