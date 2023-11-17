@@ -1,0 +1,51 @@
+﻿@page
+@model SupermarketWEB.Pages.Providers.EditModel
+@{
+	ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Providers</h4>
+
+<hr/>
+
+<div class="row">
+	<div class="col-md-4">
+		<form method="post">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<input type="hidden" asp-for="Providers.Id" />
+			<div class="form-group">
+				<label asp-for="Providers.Nit" class="control-label"></label>
+				<input asp-for="Providers.Nit" class="form-control" />
+				<span asp-validation-for="Providers.Nit" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Providers.Name" class="control-label"></label>
+				<input asp-for="Providers.Name" class="form-control" />
+				<span asp-validation-for="Providers.Name" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Providers.Address" class="control-label"></label>
+				<input asp-for="Providers.Address" class="form-control" />
+				<span asp-validation-for="Providers.Address" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Providers.Number" class="control-label"></label>
+				<input asp-for="Providers.Number" class="form-control" />
+				<span asp-validation-for="Providers.Number" class="text-danger"></span>
+				<br>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Save" class="btn btn-success" />
+				<a asp-page="./Index" class="btn btn-primary">Back to List</a>
+			</div>
+		</form>
+	</div>
+</div>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}
