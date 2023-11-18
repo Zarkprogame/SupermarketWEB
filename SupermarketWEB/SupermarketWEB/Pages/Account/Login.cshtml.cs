@@ -2,7 +2,9 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Data.SqlClient;
 using SupermarketWEB.Models;
+using System.Data;
 using System.Security.Claims;
 
 namespace SupermarketWEB.Pages.Account
@@ -12,15 +14,8 @@ namespace SupermarketWEB.Pages.Account
         [BindProperty]
         public User User { get; set; }
 
-        public void OnGet()
-        {
-
-        }
         public async Task<IActionResult> OnPostAsync() { 
             if (!ModelState.IsValid) return Page();
-
-            
-
             if (User.Email == "user@gmail.com" && User.Password == "12345") {
                 var claims = new List<Claim> {
                     new Claim(ClaimTypes.Name, "admin"),
